@@ -1,12 +1,23 @@
-import BackendHealthCheck from "./components/BackendHealthCheck";
-import IngredientList from "./components/IngredientList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-export default function App() {
+import HomePage from "./pages/HomePage/HomePage";
+import IngredientsPage from "./pages/IngredientsPage/IngredientsPage";
+import RecipesPage from "./pages/RecipesPage/RecipesPage";
+import GroceryPage from "./pages/GroceryPage/GroceryPage";
+import CalendarPage from "./pages/CalendarPage/CalendarPage";
+
+function App() {
   return (
-    <div style={{ padding: 24, fontFamily: "system-ui" }}>
-      <BackendHealthCheck />
-      <h1>Meal Prep App</h1>
-      <IngredientList />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/ingredients" element={<IngredientsPage />} />
+        <Route path="/recipes" element={<RecipesPage />} />
+        <Route path="/grocery" element={<GroceryPage />} />
+        <Route path="/calendar" element={<CalendarPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+export default App;
