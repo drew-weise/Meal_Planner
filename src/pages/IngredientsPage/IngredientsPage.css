@@ -1,0 +1,46 @@
+.ingredients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.ingredient-card {
+  width: 100%;
+  max-width: 800px;
+
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+
+  border-radius: 16px;
+
+  padding: 1rem;
+
+  box-sizing: border-box;
+}
+
+.ingredient-card button {
+  width: 100%;
+
+  background: none;
+  border: none;
+
+  color: white;
+
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.ingredient-details {
+  margin-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  color: #d0d0d0;
+}
