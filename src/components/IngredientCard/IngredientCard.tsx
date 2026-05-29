@@ -14,9 +14,13 @@ function IngredientCard(props: Props) {
   }
 
   return (
-    <div className="ingredient-card">
-      <button onClick={handleToggle}>
-        {props.ingredient.name}
+    <article className="ingredient-card">
+      <button className="ingredient-card-header" onClick={handleToggle}>
+        <span className="ingredient-name">{props.ingredient.name}</span>
+
+        <span className={`dropdown-arrow ${isOpen ? "open" : ""}`}>
+          ▼
+        </span>
       </button>
 
       {isOpen && (
@@ -25,9 +29,11 @@ function IngredientCard(props: Props) {
           <p>Protein: {props.ingredient.protein}g</p>
           <p>Carbs: {props.ingredient.carbs}g</p>
           <p>Fat: {props.ingredient.fat}g</p>
+
+          <button className="edit-button">Edit</button>
         </div>
       )}
-    </div>
+    </article>
   );
 }
 

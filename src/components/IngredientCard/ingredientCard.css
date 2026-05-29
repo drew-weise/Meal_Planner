@@ -1,0 +1,57 @@
+.ingredient-card {
+  width: 100%;
+  max-width: 850px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.ingredient-card-header {
+  width: 100%;
+  min-height: 64px;
+  padding: 0 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: white;
+  border: none;
+  cursor: pointer;
+}
+
+.ingredient-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.dropdown-arrow {
+  color: #666;
+  font-size: 0.9rem;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
+}
+
+.ingredient-details {
+  padding: 0 1rem 1rem;
+  background: white;
+  color: #333;
+}
+
+.ingredient-details p {
+  margin: 0.35rem 0;
+}
+
+.edit-button {
+  margin-top: 0.75rem;
+  padding: 0.5rem 0.9rem;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f7f7f7;
+
+  cursor: pointer;
+}
