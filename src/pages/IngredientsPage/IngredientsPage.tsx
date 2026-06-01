@@ -2,17 +2,21 @@ import "./IngredientsPage.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import IngredientCard from "../../components/IngredientCard/IngredientCard";
 import { ingredients } from "../../data/ingredients";
+import { useState } from "react";
 
 function IngredientsPage() {
 
+  const [searchTerm, setSearchTerm] = useState("");
+  
   function handleAddIngredient() {
-    // Logic to add a new ingredient (e.g., open a modal or navigate to an add ingredient page)
+    
     alert("Add Ingredient functionality to be implemented soon...");
   }
 
-  function handleSearch(event) {
+  function handleSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     alert("Search functionality to be implemented soon...");
+    console.log("Searching for:", searchTerm);
 
   }
 
@@ -30,6 +34,8 @@ function IngredientsPage() {
                 className="ingredient-search"
                 type="text"
                 placeholder="Search ingredients..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
               />
 
               <button
