@@ -1,4 +1,6 @@
 export type BaseUnit = "g" | "ml" | "unit";
+export type RecipeType = "breakfast" | "lunch" | "dinner" | "snack" | "dessert";
+
 
 export type Ingredient = {
   id: number;
@@ -11,13 +13,22 @@ export type Ingredient = {
   fat: number;
 };
 
-export type MealIngredient = {
+export type RecipeIngredient = {
   ingredientId: number;
   amount: number;
 };
 
-export type Meal = {
+export type Recipe = {
   id: number;
   name: string;
-  ingredients: MealIngredient[];
+  type: RecipeType;
+  servings: number;
+  calories: number;
+  protein: number;
+  carbs: number;
+  fat: number;
+  prepTime: number;
+  ingredients: RecipeIngredient[];
+  instructions: string[];
+  notes?: string;
 };
