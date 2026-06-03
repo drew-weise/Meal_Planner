@@ -1,16 +1,25 @@
 import "./IngredientsPage.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
-import IngredientCard from "../../components/IngredientCard/IngredientCard";
-import { ingredients } from "../../data/ingredients";
-import { useState } from "react";
+import IngredientCard from "../../components/IngredientCard/FoodItemCard";
+import { useState, useEffect } from "react";
+import AddIngredient from "../../components/AddFoodItem/AddFoodItem";
+import type { FoodItem } from "../../types/food";
 
 function IngredientsPage() {
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [showAddIngredient, setShowAddIngredient] = useState(false);
+  const [ingredientList, setIngredientList] = useState<FoodItem[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5174/api/ingredients")
+      .then((response) => response.json())
+      .then((data) => setIngredientList(data))
+      .catch((error) => console.error(error));
+  }, []);
   
   function handleAddIngredient() {
-    
-    alert("Add Ingredient functionality to be implemented soon...");
+    setShowAddIngredient(true);
   }
 
   function handleSearch(event: React.FormEvent<HTMLFormElement>) {
@@ -54,15 +63,17 @@ function IngredientsPage() {
         </section>
 
         <section className="ingredients-list">
-          {ingredients.map((ingredient) => (
+          {ingredientList.map((ingredient) => (
             <IngredientCard
               key={ingredient.id}
-              ingredient={ingredient}
+              foodItem={ingredient}
             />
           ))}
         </section>
 
       </main>
+      
+      {showAddIngredient && (<AddIngredient onClose={() => setShowAddIngredient(false)} />)}
 
       <BottomNav />
     </>

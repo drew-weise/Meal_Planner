@@ -1,9 +1,9 @@
 import { useState } from "react";
-import type { Ingredient } from "../../types/food";
-import "./IngredientCard.css";
+import type { FoodItem } from "../../types/food";
+import "./FoodItemCard.css";
 
 type Props = {
-  ingredient: Ingredient;
+  foodItem: FoodItem;
 };
 
 function IngredientCard(props: Props) {
@@ -16,7 +16,7 @@ function IngredientCard(props: Props) {
   return (
     <article className="ingredient-card">
       <button className="ingredient-card-header" onClick={handleToggle}>
-        <span className="ingredient-name">{props.ingredient.name}</span>
+        <span className="ingredient-name">{props.foodItem.name}</span>
 
         <span className={`dropdown-arrow ${isOpen ? "open" : ""}`}>
           ▼
@@ -25,10 +25,10 @@ function IngredientCard(props: Props) {
 
       {isOpen && (
         <div className="ingredient-details">
-          <p>Calories: {props.ingredient.calories}</p>
-          <p>Protein: {props.ingredient.protein}g</p>
-          <p>Carbs: {props.ingredient.carbs}g</p>
-          <p>Fat: {props.ingredient.fat}g</p>
+          <p>Calories: {props.foodItem.calories}</p>
+          <p>Protein: {props.foodItem.protein}g</p>
+          <p>Carbs: {props.foodItem.carbs}g</p>
+          <p>Fat: {props.foodItem.fat}g</p>
 
           <button className="edit-button">Edit</button>
         </div>
