@@ -1,7 +1,7 @@
 import "./RecipesPage.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
 import MealCard from "../../components/MealCard/MealCard";
-import { meals } from "../../data/meal";
+import { meals } from "../../data/mealData";
 
 export default function RecipesPage() {
   return (
