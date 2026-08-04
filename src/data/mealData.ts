@@ -1,4 +1,4 @@
-import type { Meal } from "../types/food";
+import type { Meal } from "../types/meal";
 
 export const meals: Meal[] = [
   {
@@ -7,15 +7,15 @@ export const meals: Meal[] = [
     servings: 1,
     ingredients: [
       {
-        foodId: 1,
+        ingredientId: 1,
         quantity: 2,
       },
       {
-        foodId: 2,
+        ingredientId: 2,
         quantity: 2,
       },
       {
-        foodId: 3,
+        ingredientId: 3,
         quantity: 1,
       },
     ],
@@ -27,15 +27,15 @@ export const meals: Meal[] = [
     servings: 1,
     ingredients: [
       {
-        foodId: 5,
+        ingredientId: 5,
         quantity: 1,
       },
       {
-        foodId: 6,
+        ingredientId: 6,
         quantity: 1,
       },
       {
-        foodId: 7,
+        ingredientId: 7,
         quantity: 1.5,
       },
     ],
@@ -47,7 +47,7 @@ export const meals: Meal[] = [
     servings: 1,
     ingredients: [
       {
-        foodId: 4,
+        ingredientId: 4,
         quantity: 3,
       },
     ],

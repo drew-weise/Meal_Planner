@@ -1,7 +1,8 @@
 // MealCard.tsx
 import "./MealCard.css";
-import type { Meal, Nutrition } from "../../types/food";
-import { foods } from "../../data/foods";
+import type { Nutrition } from "../../types/nutrition";
+import type { Meal } from "../../types/meal";
+import { foods } from "../../data/foodData";
 
 type MealCardProps = {
   meal: Meal;
@@ -13,7 +14,7 @@ function calculateMealNutrition(meal: Meal): Nutrition {
   return meal.ingredients.reduce<Nutrition>(
     (total, mealIngredient) => {
       const food = foods.find(
-        (food) => food.id === mealIngredient.foodId
+        (food) => food.id === mealIngredient.ingredientId
       );
 
       if (!food) {

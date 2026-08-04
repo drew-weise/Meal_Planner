@@ -1,6 +1,6 @@
-import type { Food } from "../types/food";
+import type { Ingredient } from "../types/meal";
 
-export const foods: Food[] = [
+export const foods: Ingredient[] = [
   {
     id: 1,
     name: "Chicken Breast",

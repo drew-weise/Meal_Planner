@@ -1,11 +1,6 @@
-export type Nutrition = {
-  calories: number;
-  protein: number;
-  carbs: number;
-  fat: number;
-};
+import type { Nutrition } from "./nutrition";
 
-export type Food = {
+export type Ingredient = {
   id: number;
   name: string;
   servingAmount: number;
@@ -14,7 +9,7 @@ export type Food = {
 };
 
 export type MealIngredient = {
-  foodId: number;
+  ingredientId: number;
   quantity: number;
 };
 
