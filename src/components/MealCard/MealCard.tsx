@@ -6,50 +6,78 @@ import { foods } from "../../data/foodData";
 
 type MealCardProps = {
   meal: Meal;
-  onAddToPlan?: (meal: Meal) => void;
-  onViewDetails?: (meal: Meal) => void;
 };
 
+// function calculateMealNutrition(meal: Meal): Nutrition {
+//   return meal.ingredients.reduce<Nutrition>(
+//     (total, mealIngredient) => {
+//       const food = foods.find(
+//         (food) => food.id === mealIngredient.ingredientId
+//       );
+
+//       if (!food) {
+//         return total;
+//       }
+
+//       return {
+//         calories:
+//           total.calories +
+//           food.nutrition.calories * mealIngredient.quantity,
+//         protein:
+//           total.protein +
+//           food.nutrition.protein * mealIngredient.quantity,
+//         carbs:
+//           total.carbs +
+//           food.nutrition.carbs * mealIngredient.quantity,
+//         fat:
+//           total.fat +
+//           food.nutrition.fat * mealIngredient.quantity,
+//       };
+//     },
+//     {
+//       calories: 0,
+//       protein: 0,
+//       carbs: 0,
+//       fat: 0,
+//     }
+//   );
+// }
+
 function calculateMealNutrition(meal: Meal): Nutrition {
-  return meal.ingredients.reduce<Nutrition>(
-    (total, mealIngredient) => {
-      const food = foods.find(
-        (food) => food.id === mealIngredient.ingredientId
-      );
+  const total: Nutrition = {
+    calories: 0,
+    protein: 0,
+    carbs: 0,
+    fat: 0,
+  };
 
-      if (!food) {
-        return total;
-      }
+  for (const mealIngredient of meal.ingredients) {
+    const matchingFood = foods.find(
+      (food) => food.id === mealIngredient.ingredientId
+    );
 
-      return {
-        calories:
-          total.calories +
-          food.nutrition.calories * mealIngredient.quantity,
-        protein:
-          total.protein +
-          food.nutrition.protein * mealIngredient.quantity,
-        carbs:
-          total.carbs +
-          food.nutrition.carbs * mealIngredient.quantity,
-        fat:
-          total.fat +
-          food.nutrition.fat * mealIngredient.quantity,
-      };
-    },
-    {
-      calories: 0,
-      protein: 0,
-      carbs: 0,
-      fat: 0,
+    if (!matchingFood) {
+      continue;
     }
-  );
+
+    total.calories +=
+      matchingFood.nutrition.calories * mealIngredient.quantity;
+
+    total.protein +=
+      matchingFood.nutrition.protein * mealIngredient.quantity;
+
+    total.carbs +=
+      matchingFood.nutrition.carbs * mealIngredient.quantity;
+
+    total.fat +=
+      matchingFood.nutrition.fat * mealIngredient.quantity;
+  }
+
+  return total;
 }
 
-export default function MealCard({
-  meal,
-  onAddToPlan,
-  onViewDetails,
-}: MealCardProps) {
+export default function MealCard(props: MealCardProps) {
+  const meal = props.meal;
   const nutrition = calculateMealNutrition(meal);
 
   return (
@@ -88,17 +116,13 @@ export default function MealCard({
         <div className="meal-card__actions">
           <button
             type="button"
-            className="meal-card__details-button"
-            onClick={() => onViewDetails?.(meal)}
-          >
+            className="meal-card__details-button">
             Details
           </button>
 
           <button
             type="button"
-            className="meal-card__add-button"
-            onClick={() => onAddToPlan?.(meal)}
-          >
+            className="meal-card__add-button">
             Add to plan
           </button>
         </div>
