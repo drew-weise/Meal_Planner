@@ -1,6 +1,6 @@
-import type { Meal } from "../types/meal";
+import type { Recipe } from "../types/recipes";
 
-export const meals: Meal[] = [
+export const recipes: Recipe[] = [
   {
     id: 1,
     name: "Chicken and Rice",
@@ -18,6 +18,14 @@ export const meals: Meal[] = [
         ingredientId: 3,
         quantity: 1,
       },
+    ],
+    instructions: [
+      "Wash the rice.",
+      "Cook the rice in water for 30 minutes.",
+      "Slice the chicken into strips.",
+      "Heat oil in a pan.",
+      "Brown the chicken on one side.",
+      "Flip the chicken and cook through."
     ],
   },
 

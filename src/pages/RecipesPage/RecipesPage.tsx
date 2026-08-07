@@ -1,14 +1,14 @@
 import "./RecipesPage.css";
 import BottomNav from "../../components/BottomNav/BottomNav";
-import MealCard from "../../components/MealCard/MealCard";
-import { meals } from "../../data/mealData";
+import RecipeCard from "../../components/RecipeCard/RecipeCard";
+import { recipes } from "../../data/recipeData";
 
-export default function RecipesPage() {
+export default function MealsPage() {
   return (
     <main className="home-page">
-      <section className="meal-grid">
-        {meals.map((meal) => (
-          <MealCard key={meal.id} meal={meal} />
+      <section className="recipe-grid">
+        {recipes.map((recipe) => (
+          <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
       </section>
 

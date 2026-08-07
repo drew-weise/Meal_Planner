@@ -1,6 +1,6 @@
 /* MealCard.css */
 
-.meal-card {
+.recipe-card {
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -11,7 +11,7 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
-.meal-card__header {
+.recipe-card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,20 +21,20 @@
   border-bottom: 1px solid #ecefec;
 }
 
-.meal-card__header h2 {
+.recipe-card__header h2 {
   margin: 0;
   font-size: 1.3rem;
   line-height: 1.2;
   color: #202622;
 }
 
-.meal-card__header span {
+.recipe-card__header span {
   flex-shrink: 0;
   font-size: 0.8rem;
   color: #6d756f;
 }
 
-.meal-card__image {
+.recipe-card__image {
   display: grid;
   place-items: center;
   width: 100%;
@@ -44,13 +44,13 @@
   color: #727a74;
 }
 
-.meal-card__image img {
+.recipe-card__image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.meal-card__content {
+.recipe-card__content {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -59,20 +59,20 @@
   padding: 16px;
 }
 
-.meal-card__calories {
+.recipe-card__calories {
   margin: 0;
   font-size: 1.2rem;
   font-weight: 700;
   color: #27734a;
 }
 
-.meal-card__nutrition {
+.recipe-card__nutrition {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 6px;
 }
 
-.meal-card__nutrition div {
+.recipe-card__nutrition div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -83,17 +83,17 @@
   border-radius: 8px;
 }
 
-.meal-card__nutrition strong {
+.recipe-card__nutrition strong {
   font-size: 0.9rem;
   color: #202622;
 }
 
-.meal-card__nutrition span {
+.recipe-card__nutrition span {
   font-size: 0.65rem;
   color: #6d756f;
 }
 
-.meal-card__actions {
+.recipe-card__actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6px;
@@ -101,7 +101,7 @@
   margin-top: 4px;
 }
 
-.meal-card__actions button {
+.recipe-card__actions button {
   padding: 8px 10px;
 
   border-radius: 8px;
@@ -113,14 +113,35 @@
   cursor: pointer;
 }
 
-.meal-card__details-button {
+.recipe-card__details-button {
   background: white;
   border: 1px solid #cbd2cc;
   color: #303732;
 }
 
-.meal-card__add-button {
+.recipe-card__add-button {
   background: #27734a;
   border: 1px solid #27734a;
   color: white;
+}
+
+.recipe-card__details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #ecefec;
+}
+
+.recipe-card__details h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.recipe-card__details ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recipe-card__details li {
+  margin-bottom: 8px;
+  line-height: 1.5;
 }
