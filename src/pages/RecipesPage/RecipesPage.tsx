@@ -3,7 +3,7 @@ import BottomNav from "../../components/BottomNav/BottomNav";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
 import { recipes } from "../../data/recipeData";
 
-export default function MealsPage() {
+export default function RecipesPage() {
   return (
     <main className="home-page">
       <section className="recipe-grid">
