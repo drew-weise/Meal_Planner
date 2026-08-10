@@ -1,0 +1,147 @@
+/* MealCard.css */
+
+.recipe-details {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: white;
+  border: 1px solid #e1e5e2;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.recipe-details__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 14px 16px;
+  border-bottom: 1px solid #ecefec;
+}
+
+.recipe-details__header h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: #202622;
+}
+
+.recipe-details__header span {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: #6d756f;
+}
+
+.recipe-details__image {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 180px;
+
+  background: #e8ede9;
+  color: #727a74;
+}
+
+.recipe-details__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-details__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 16px;
+}
+
+.recipe-details__calories {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #27734a;
+}
+
+.recipe-details__nutrition {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.recipe-details__nutrition div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+
+  padding: 8px 4px;
+  background: #f3f6f4;
+  border-radius: 8px;
+}
+
+.recipe-details__nutrition strong {
+  font-size: 0.9rem;
+  color: #202622;
+}
+
+.recipe-details__nutrition span {
+  font-size: 0.65rem;
+  color: #6d756f;
+}
+
+.recipe-details__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+
+  margin-top: 4px;
+}
+
+.recipe-details__actions button {
+  padding: 8px 10px;
+
+  border-radius: 8px;
+
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.recipe-details__details-button {
+  background: white;
+  border: 1px solid #cbd2cc;
+  color: #303732;
+}
+
+.recipe-details__add-button {
+  background: #27734a;
+  border: 1px solid #27734a;
+  color: white;
+}
+
+.recipe-details__details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #ecefec;
+}
+
+.recipe-details__details h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.recipe-details__details ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recipe-details__details li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}

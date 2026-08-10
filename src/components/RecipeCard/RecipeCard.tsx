@@ -2,23 +2,25 @@
 import "./RecipeCard.css";
 import type { Recipe } from "../../types/recipes";
 import calculateRecipeNutrition from "../../utils/nutrition"; 
-import { useState } from "react";
 
 type RecipeCardProps = {
   recipe: Recipe;
+  onSelect: (recipe: Recipe) => void;
 };
 
 export default function RecipeCard(props: RecipeCardProps) {
   const recipe = props.recipe;
+  const onSelect = props.onSelect;
+
   const nutrition = calculateRecipeNutrition(recipe);
-  const [showDetails, setShowDetails] = useState(false);
 
 
-  console.log(showDetails);
 
   return (
-    <article className="recipe-card"
-      onClick={() => setShowDetails(!showDetails)}>
+    <article 
+      className="recipe-card"
+      onClick={() => onSelect(recipe)}
+    >
       <header className="recipe-card__header">
         <h2>{recipe.name}</h2>
       </header>
@@ -49,8 +51,6 @@ export default function RecipeCard(props: RecipeCardProps) {
             <span>Fat</span>
           </div>
         </div>
-
-        {showDetails ? "Details!!" : ""}
 
       </div>
     </article>

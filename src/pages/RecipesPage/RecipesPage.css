@@ -1,6 +1,6 @@
 /* RecipesPage.css */
 
-.home-page {
+.recipe-page {
   min-height: 100vh;
   padding: 24px 20px 96px;
   background: #f5f6f8;
@@ -12,7 +12,7 @@
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  gap: 8px;
 
   align-items: start;
 }
