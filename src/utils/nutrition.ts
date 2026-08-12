@@ -2,9 +2,10 @@
 
 import type { Nutrition } from "../types/nutrition";
 import type { Recipe } from "../types/recipes";
-import { ingredients } from "../data/ingredientsData";
+import getDetailedRecipeIngredients from "./recipeIngredientDetails";
 
 function calculateMealNutrition(recipe: Recipe): Nutrition {
+  const detailedRecipeIngredients = getDetailedRecipeIngredients(recipe);
   const total: Nutrition = {
     calories: 0,
     protein: 0,
@@ -12,29 +13,16 @@ function calculateMealNutrition(recipe: Recipe): Nutrition {
     fat: 0,
   };
 
-  for (const ingredientReference of recipe.ingredients) {
-    let matchingIngredient;
+  for (const details of detailedRecipeIngredients) {
+    total.calories += details.ingredient.nutrition.calories * details.quantity;
 
-    for (const ingredient of ingredients) {
-      if (ingredient.id === ingredientReference.ingredientId) {
-        matchingIngredient = ingredient;
-        break;
-      }
-    }
+    total.protein += details.ingredient.nutrition.protein * details.quantity;
 
-    if (!matchingIngredient) {
-      continue;
-    }
+    total.carbs += details.ingredient.nutrition.carbs * details.quantity;
 
-    total.calories += matchingIngredient.nutrition.calories * ingredientReference.quantity;
+    total.fat += details.ingredient.nutrition.fat * details.quantity;
 
-    total.protein += matchingIngredient.nutrition.protein * ingredientReference.quantity;
-
-    total.carbs += matchingIngredient.nutrition.carbs * ingredientReference.quantity;
-
-    total.fat += matchingIngredient.nutrition.fat * ingredientReference.quantity;
   }
-
   return total;
 }
 

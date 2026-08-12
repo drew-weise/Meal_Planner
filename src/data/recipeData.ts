@@ -5,7 +5,7 @@ export const recipes: Recipe[] = [
     id: 1,
     name: "Chicken and Rice",
     servings: 1,
-    ingredients: [
+    recipeIngredients: [
       {
         ingredientId: 1,
         quantity: 2,
@@ -33,7 +33,7 @@ export const recipes: Recipe[] = [
     id: 2,
     name: "Greek Yogurt Bowl",
     servings: 1,
-    ingredients: [
+    recipeIngredients: [
       {
         ingredientId: 5,
         quantity: 1,
@@ -53,7 +53,7 @@ export const recipes: Recipe[] = [
     id: 3,
     name: "Scrambled Eggs",
     servings: 1,
-    ingredients: [
+    recipeIngredients: [
       {
         ingredientId: 4,
         quantity: 3,

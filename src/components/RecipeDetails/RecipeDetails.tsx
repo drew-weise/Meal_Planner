@@ -1,39 +1,21 @@
-// MealCard.tsx
+// RecipeDetails.tsx
 import "./RecipeDetails.css";
 import type { Recipe } from "../../types/recipes";
-import calculateRecipeNutrition from "../../utils/nutrition"; 
-import { ingredients } from "../../data/ingredientsData";
+import calculateRecipeNutrition from "../../utils/nutrition";
+import getDetailedRecipeIngredients from "../../utils/recipeIngredientDetails";
 
 type RecipeDetailsProps = {
   recipe: Recipe;
   onBack: (recipe: Recipe | null) => void;
 };
 
-
 export default function RecipeDetails(props: RecipeDetailsProps) {
   const recipe = props.recipe;
   const onBack = props.onBack;
-  
+
   const nutrition = calculateRecipeNutrition(recipe);
+  const detailedRecipeIngredients = getDetailedRecipeIngredients(recipe);
 
-
-  for (const ingredientReference of recipe.ingredients) {
-    let matchingIngredient;
-
-    for (const ingredient of ingredients) {
-      if (ingredient.id === ingredientReference.ingredientId) {
-        matchingIngredient = ingredient;
-        break;
-      }
-    }
-
-    if (!matchingIngredient) {
-      continue;
-    }
-
-    // { COMPLETE, INGREDIENT OBJECT???? STORE THE INGREDIENTS FOR USE LATER?
-    //   name: 
-    // }
   return (
     <article className="recipe-details">
       <header className="recipe-details__header">
@@ -46,7 +28,7 @@ export default function RecipeDetails(props: RecipeDetailsProps) {
       </div>
 
       <div className="recipe-details__content">
-        <div className="recipe-details__nutrition">
+        <section className="recipe-details__nutrition">
           <div>
             <strong>{Math.round(nutrition.calories)}</strong>
             <span>Calories</span>
@@ -66,21 +48,42 @@ export default function RecipeDetails(props: RecipeDetailsProps) {
             <strong>{Math.round(nutrition.fat)}g</strong>
             <span>Fat</span>
           </div>
+        </section>
 
+        <section className="recipe-details__ingredients">
+          <h3>Ingredients</h3>
 
-          <div className="recipe-details_ingredients">
-              {recipe.ingredients.map((ingredient) => (
-                <div>
-                  {ingredient.ingredientId}
-                </div>
-              ))}
-          </div>
+          {detailedRecipeIngredients.map((details) => (
+            <div
+              className="recipe-details__ingredient"
+              key={details.ingredient.id}
+            >
+              <span>{details.ingredient.name}</span>
 
-          <div className="recipe-details_instructions">
-              {recipe.instructions}
-          </div>
-        </div>
+              <span>
+                {details.ingredient.servingAmount * details.quantity}
+                {details.ingredient.servingUnit}
+              </span>
+            </div>
+          ))}
+        </section>
 
+        <section className="recipe-details__instructions">
+          <h3>Instructions</h3>
+
+          {recipe.instructions?.map((instruction, index) => (
+            <div
+              className="recipe-details__instruction"
+              key={index}
+            >
+              {index + 1}. {instruction}
+            </div>
+          ))}
+        </section>
+
+        <button className="recipe-details__edit">
+          Edit Recipe
+        </button>
       </div>
     </article>
   );
