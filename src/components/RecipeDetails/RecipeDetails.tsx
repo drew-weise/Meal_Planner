@@ -20,8 +20,26 @@ export default function RecipeDetails(props: RecipeDetailsProps) {
   return (
     <article className="recipe-details">
       <header className="recipe-details__header">
-        <button onClick={() => onBack(null)}>←</button>
-        <h2>{recipe.name}</h2>
+        <button
+          className="recipe-details__back-button"
+          onClick={() => onBack(null)}
+        >
+          ←
+        </button>
+
+        <div className="recipe-details__header-info">
+          <h2>{recipe.name}</h2>
+
+          <span className="recipe-details__header-divider">|</span>
+
+          <span className="recipe-details__servings">
+            {recipe.servings} serving{recipe.servings !== 1 ? "s" : ""}
+          </span>
+        </div>
+
+        <button className="recipe-details__edit-button">
+          Edit
+        </button>
       </header>
 
       <div className="recipe-details__image">
@@ -52,7 +70,12 @@ export default function RecipeDetails(props: RecipeDetailsProps) {
         </section>
 
         <section className="recipe-details__ingredients">
-          <h3>Ingredients</h3>
+          <div className="recipe-details__section-header">
+            <h3>Ingredients</h3>
+            <button className="recipe-details__section-edit">
+              Edit
+            </button>
+          </div>
 
           {detailedRecipeIngredients.map((details) => (
             <div
@@ -61,7 +84,7 @@ export default function RecipeDetails(props: RecipeDetailsProps) {
             >
               <span>{details.ingredient.name}</span>
 
-              <span>
+              <span className="recipe-details__ingredient-amount">
                 {details.ingredient.servingAmount * details.quantity}
                 {details.ingredient.servingUnit}
               </span>
@@ -70,14 +93,23 @@ export default function RecipeDetails(props: RecipeDetailsProps) {
         </section>
 
         <section className="recipe-details__instructions">
-          <h3>Instructions</h3>
+          <div className="recipe-details__section-header">
+            <h3>Instructions</h3>
+            <button className="recipe-details__section-edit">
+              Edit
+            </button>
+          </div>
 
           {recipe.instructions?.map((instruction, index) => (
             <div
               className="recipe-details__instruction"
               key={index}
             >
-              {index + 1}. {instruction}
+              <span className="recipe-details__instruction-number">
+                {index + 1}.
+              </span>
+
+              <span>{instruction}</span>
             </div>
           ))}
         </section>
