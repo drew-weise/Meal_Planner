@@ -12,6 +12,7 @@ type RecipeEditProps = {
 export default function RecipeEdit(props: RecipeEditProps) {
   const recipe = props.recipe;
   const onBack = props.onBack;
+  
 
   const nutrition = calculateRecipeNutrition(recipe);
   const detailedRecipeIngredients = getDetailedRecipeIngredients(recipe);
@@ -81,9 +82,16 @@ export default function RecipeEdit(props: RecipeEditProps) {
           ))}
         </section>
 
-        <button className="recipe-edit__edit">
-          Edit Recipe
-        </button>
+        <div className="recipe-edit_buttons">
+            <button className="recipe-save__edit">
+            Save Recipe
+            </button>        
+            
+            <button className="recipe-cancel__edit">
+            Cancel
+            </button>
+        </div>
+
       </div>
     </article>
   );

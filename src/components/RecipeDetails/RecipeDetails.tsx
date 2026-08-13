@@ -1,17 +1,20 @@
 // RecipeDetails.tsx
 import "./RecipeDetails.css";
 import type { Recipe } from "../../types/recipes";
+
 import calculateRecipeNutrition from "../../utils/nutrition";
 import getDetailedRecipeIngredients from "../../utils/recipeIngredientDetails";
 
 type RecipeDetailsProps = {
   recipe: Recipe;
   onBack: (recipe: Recipe | null) => void;
+  onEdit: () => void;
 };
 
 export default function RecipeDetails(props: RecipeDetailsProps) {
   const recipe = props.recipe;
   const onBack = props.onBack;
+  const onEdit = props.onEdit;
 
   const nutrition = calculateRecipeNutrition(recipe);
   const detailedRecipeIngredients = getDetailedRecipeIngredients(recipe);
@@ -81,7 +84,7 @@ export default function RecipeDetails(props: RecipeDetailsProps) {
           ))}
         </section>
 
-        <button className="recipe-details__edit">
+        <button className="recipe-details__edit" onClick={onEdit}>
           Edit Recipe
         </button>
       </div>
