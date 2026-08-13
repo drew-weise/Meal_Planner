@@ -6,7 +6,7 @@ export default function BottomNav() {
     <nav className="bottom-nav">
       <NavLink to="/">Home</NavLink>
       <NavLink to="/recipes">Recipes</NavLink>
-      <NavLink to="/calendar">Calendar</NavLink>
+      <NavLink to="/planner">Planner</NavLink>
     </nav>
   );
 }

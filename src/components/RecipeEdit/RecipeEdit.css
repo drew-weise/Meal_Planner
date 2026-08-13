@@ -1,0 +1,120 @@
+/* RecipeEdit.css */
+
+.recipe-edit {
+  min-height: 100vh;
+  background: #f7f7f7;
+  padding-bottom: 32px;
+}
+
+.recipe-edit__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
+
+.recipe-edit__header button {
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.recipe-edit__header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.recipe-edit__image {
+  height: 220px;
+  margin: 16px;
+  background: #ddd;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe-edit__content {
+  padding: 0 16px;
+}
+
+.recipe-edit__nutrition {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.recipe-edit__nutrition div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.recipe-edit__nutrition strong {
+  font-size: 18px;
+}
+
+.recipe-edit__nutrition span {
+  font-size: 12px;
+  color: #666;
+}
+
+.recipe-edit__ingredients,
+.recipe-edit__instructions {
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.recipe-edit__ingredients h3,
+.recipe-edit__instructions h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.recipe-edit__ingredient {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.recipe-edit__ingredient:last-child {
+  border-bottom: none;
+}
+
+.recipe-edit__instruction {
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.recipe-edit__instruction:last-child {
+  margin-bottom: 0;
+}
+
+.recipe-edit__edit {
+  width: 100%;
+  padding: 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
