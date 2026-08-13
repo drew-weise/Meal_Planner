@@ -1,27 +1,56 @@
 // RecipeEdit.tsx
 import "./RecipeEdit.css";
+
+import { useState } from "react";
+
 import type { Recipe } from "../../types/recipes";
+
 import calculateRecipeNutrition from "../../utils/nutrition";
 import getDetailedRecipeIngredients from "../../utils/recipeIngredientDetails";
+
 
 type RecipeEditProps = {
   recipe: Recipe;
   onBack: (recipe: Recipe | null) => void;
+  onSave: (updatedRecipe: Recipe) => void;
 };
 
 export default function RecipeEdit(props: RecipeEditProps) {
-  const recipe = props.recipe;
-  const onBack = props.onBack;
-  
+    const recipe = props.recipe;
+    const onBack = props.onBack;
+    const onSave = props.onSave;
 
-  const nutrition = calculateRecipeNutrition(recipe);
-  const detailedRecipeIngredients = getDetailedRecipeIngredients(recipe);
+    const [editedRecipe, setEditedRecipe] = useState<Recipe>(recipe);
+
+    const nutrition = calculateRecipeNutrition(editedRecipe);
+    const detailedRecipeIngredients = getDetailedRecipeIngredients(editedRecipe);
+
+    function handleSave() {
+        onSave(editedRecipe);
+    }
 
   return (
     <article className="recipe-edit">
       <header className="recipe-edit__header">
         <button onClick={() => onBack(null)}>←</button>
-        <h2>{recipe.name}</h2>
+        <input
+            value={editedRecipe.name}
+            onChange={(e) => setEditedRecipe({
+                ...editedRecipe,
+                name: e.target.value,
+            })}
+        />
+
+        <input
+            type="number"
+            value={editedRecipe.servings}
+            onChange={(e) =>
+                setEditedRecipe({
+                ...editedRecipe,
+                servings: Number(e.target.value),
+                })
+            }
+        />
       </header>
 
       <div className="recipe-edit__image">
@@ -72,7 +101,7 @@ export default function RecipeEdit(props: RecipeEditProps) {
         <section className="recipe-edit__instructions">
           <h3>Instructions</h3>
 
-          {recipe.instructions?.map((instruction, index) => (
+          {editedRecipe.instructions?.map((instruction, index) => (
             <div
               className="recipe-edit__instruction"
               key={index}
@@ -82,13 +111,13 @@ export default function RecipeEdit(props: RecipeEditProps) {
           ))}
         </section>
 
-        <div className="recipe-edit_buttons">
-            <button className="recipe-save__edit">
-            Save Recipe
+        <div className="recipe-edit_buttons" >
+            <button className="recipe-save__edit" onClick={handleSave}>
+                Save Recipe
             </button>        
             
-            <button className="recipe-cancel__edit">
-            Cancel
+            <button className="recipe-cancel__edit" onClick={() => onBack(null)}>
+                Cancel
             </button>
         </div>
 

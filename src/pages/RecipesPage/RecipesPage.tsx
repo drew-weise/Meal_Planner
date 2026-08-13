@@ -16,12 +16,27 @@ export default function RecipesPage() {
 
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [recipeList, setRecipeList] = useState<Recipe[]>(recipes);
+
+  function handleSaveRecipe(updatedRecipe: Recipe) {
+    setRecipeList(
+      recipeList.map((recipe) =>
+        recipe.id === updatedRecipe.id
+          ? updatedRecipe
+          : recipe
+      )
+    );
+
+    setSelectedRecipe(updatedRecipe);
+    setIsEditing(false);
+  }
 
   if (selectedRecipe && isEditing) {
     return (
       <RecipeEdit
         recipe={selectedRecipe}
         onBack={() => setIsEditing(false)}
+        onSave={handleSaveRecipe}
       />
     );
   }
@@ -39,7 +54,7 @@ export default function RecipesPage() {
   return (
     <main className="recipe-page">
       <section className="recipe-grid">
-        {recipes.map((recipe) => (
+        {recipeList.map((recipe) => (
           <RecipeCard 
           key={recipe.id} 
           recipe={recipe} 
