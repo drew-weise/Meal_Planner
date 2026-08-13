@@ -2,18 +2,30 @@
 
 .recipe-page {
   min-height: 100vh;
-  padding: 24px 20px 96px;
-  background: #f5f6f8;
+
+  padding: 1.25rem;
+  padding-bottom: 7rem;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 255, 255, 0.9),
+      transparent 40%
+    ),
+    #f6f3ee;
+
+  color: #1f1d1a;
 }
 
 .recipe-grid {
-  width: min(1100px, 100%);
+  width: 100%;
+  max-width: 720px;
+
   margin: 0 auto;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 8px;
+  gap: 0.75rem;
 
   align-items: start;
 }
-
