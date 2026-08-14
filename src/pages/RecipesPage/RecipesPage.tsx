@@ -11,20 +11,35 @@ import { recipes } from "../../data/recipeData";
 
 export default function RecipesPage() {
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe | null>(null);
+  const [recipeList, setRecipeList] = useState<Recipe[]>(recipes);
+
+  function handleUpdateRecipe(updatedRecipe: Recipe) {
+    setRecipeList((currentRecipes) =>
+      currentRecipes.map((recipe) =>
+        recipe.id === updatedRecipe.id
+          ? updatedRecipe
+          : recipe
+      )
+    );
+
+    setSelectedRecipe(updatedRecipe);
+  }
 
   if (selectedRecipe) {
     return (
       <RecipeDetails
         recipe={selectedRecipe}
         onBack={setSelectedRecipe}
+        onUpdateRecipe={handleUpdateRecipe}
       />
     );
   }
 
+
   return (
     <main className="recipe-page">
       <section className="recipe-grid">
-        {recipes.map((recipe) => (
+        {recipeList.map((recipe) => (
           <RecipeCard
             key={recipe.id}
             recipe={recipe}

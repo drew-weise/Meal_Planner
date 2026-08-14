@@ -1,4 +1,6 @@
 // RecipeDetails.tsx
+import { useState } from "react";
+
 import "./RecipeDetails.css";
 import type { Recipe } from "../../types/recipes";
 
@@ -8,14 +10,30 @@ import getDetailedRecipeIngredients from "../../utils/recipeIngredientDetails";
 type RecipeDetailsProps = {
   recipe: Recipe;
   onBack: (recipe: Recipe | null) => void;
+  onUpdateRecipe: (recipe: Recipe) => void;
 };
 
 export default function RecipeDetails(props: RecipeDetailsProps) {
   const recipe = props.recipe;
   const onBack = props.onBack;
+  const onUpdateRecipe = props.onUpdateRecipe;
 
   const nutrition = calculateRecipeNutrition(recipe);
   const detailedRecipeIngredients = getDetailedRecipeIngredients(recipe);
+
+  const [editingTitle, setEditingTitle] = useState(false);
+  const [name, setName] = useState(recipe.name);
+  const [servings, setServings] = useState(recipe.servings);
+
+  function handleTitleSave() {
+    onUpdateRecipe({
+      ...recipe,
+      name: name,
+      servings: servings,
+    });
+
+    setEditingTitle(false);
+  }
 
   return (
     <article className="recipe-details">
@@ -28,17 +46,43 @@ export default function RecipeDetails(props: RecipeDetailsProps) {
         </button>
 
         <div className="recipe-details__header-info">
-          <h2>{recipe.name}</h2>
+          {editingTitle ? (
+            <>
+              <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
 
-          <span className="recipe-details__header-divider">|</span>
+              <input
+                type="number"
+                value={servings}
+                onChange={(e) => setServings(Number(e.target.value))}
+              />
+            </>
+          ) : (
+            <>
+              <h2>{recipe.name}</h2>
 
-          <span className="recipe-details__servings">
-            {recipe.servings} serving{recipe.servings !== 1 ? "s" : ""}
-          </span>
+              <span className="recipe-details__header-divider">|</span>
+
+              <span className="recipe-details__servings">
+                {recipe.servings} serving{recipe.servings !== 1 ? "s" : ""}
+              </span>
+            </>
+          )}
         </div>
 
-        <button className="recipe-details__edit-button">
-          Edit
+        <button
+          className="recipe-details__edit-button"
+          onClick={() => {
+            if (editingTitle) {
+              handleTitleSave();
+            } else {
+              setEditingTitle(true);
+            }
+          }}
+        >
+          {editingTitle ? "Save" : "Edit"}
         </button>
       </header>
 
